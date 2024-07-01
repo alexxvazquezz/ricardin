@@ -5,9 +5,11 @@ from routes import bp as api_bp
 from flask_login import LoginManager
 import logging
 from logging.handlers import RotatingFileHandler
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 # Load configuration
 app.config.from_object(Config)
