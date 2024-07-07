@@ -205,6 +205,16 @@ def logout():
     logout_user()
     return jsonify({'messsage': 'Logout successful.'}), 200
 
+@bp.route('/me', methods=['GET'])
+@login_required
+def get_current_user():
+    return jsonify({
+        'id': current_user.id,
+        'email': current_user.email,
+        'first_name': current_user.first_name,
+        'last_name': current_user.last_name
+    })
+
 @bp.route('/users', methods=['GET'])
 @login_required
 def get_all_users():
